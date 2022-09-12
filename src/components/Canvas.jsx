@@ -16,13 +16,13 @@ const Canvas = () => {
     const [drawing, setDrawing] = useState(false)
     const [brash, setBrash] = useState(true)
     const [rectangle, setRectangle] = useState(false)
+    const [drag, setDrag] = useState(false)
+    const [crop, setCrop] = useState(false)
 
     const [imgData, setImgData] = useState()
     const [currentImg, setCurrentImg] = useState()
     const [copy, setCopy] = useState()
-    const [drag, setDrag] = useState(false)
     const [cropImg, setCropImg] = useState()
-    const [crop, setCrop] = useState(false)
 
 
     useEffect(() => {
@@ -126,7 +126,7 @@ const Canvas = () => {
             setBrash(false)
             setRectangle(false)
             canvasCTX.drawImage(img, 0, 0)
-            canvasCTX.putImageData(copy, offsetX, offsetY)
+            canvasCTX.putImageData(copy, offsetX - copy.width / 2, offsetY - copy.height / 2)
             setDrag(true)
         }
     }
